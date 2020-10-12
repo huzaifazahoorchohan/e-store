@@ -1,0 +1,48 @@
+.headerMain{
+    background-color:#E74C3C;
+    color:white;
+    letter-spacing: 3px;
+}
+.cart{
+    color:white;
+    margin-top:9px;
+    float:right;
+}
+
+.menuBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 500px;
+    margin: auto;
+    font-weight: 500;
+}
+
+.menuItem{
+    color:#333;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.3s;
+}
+
+.menuItem:hover{
+    text-decoration: none;
+    color:#333;
+    background-color: #E74C3C;
+    color:white;
+}
+
+.productsHead{
+    color:white;
+    background-color: #333;
+    letter-spacing: 10px;
+}
+
+.cycleImage{
+    position: relative;
+    left:40%;
+    top:10%;
+    transform: translate(-40%,-10%);
+}
+
+
