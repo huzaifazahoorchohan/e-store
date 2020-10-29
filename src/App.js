@@ -17,7 +17,7 @@ import Middle from './Components/Middle';
 import { ProductContextProvider } from './Context/GlobalContext';
 
 /// deployed link
-// shoestore-huzaifa.surge.sh
+// shoestore-huzaifa.surge.sh 
 
 const App = () =>{
   return(
