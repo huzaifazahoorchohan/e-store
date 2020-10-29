@@ -16,6 +16,9 @@ import Middle from './Components/Middle';
 // Context Data Provider
 import { ProductContextProvider } from './Context/GlobalContext';
 
+/// deployed link
+// shoestore-huzaifa.surge.sh
+
 const App = () =>{
   return(
   <ProductContextProvider>
