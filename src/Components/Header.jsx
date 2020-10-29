@@ -1,24 +1,43 @@
 import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
-// Icons
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  title: {
+    flexGrow: 1,
+    fontFamily:'Roboto',
+    fontSize:'30px',
+  },
+  head:{
+      backgroundColor:'#333'
+  },
+}));
 
 const Header = () => {
-    return (
-        <div className='container-fluid headerMain'>
-            <div className = 'container'>
-                <div className="row">
-                    <div className="col-9">
-                        <h1>BICYCLE STORE</h1>
-                    </div>
-                    <div className="col-3">
-                        <Link to = '/cart'><ShoppingCartIcon className = 'cart' style = {{fontSize:'40'}} /></Link>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    )
-};
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" className = {classes.head}>
+        <Toolbar>
+          <Typography className={classes.title} variant="h5" noWrap>
+            <Link to = '/' className = 'navHead'>THE SHOE STORE</Link>
+          </Typography>
+          <Link to = '/products' className = "navItem" >PRODUCTS</Link>
+          <Link to = '/cart' className = "navItem" >
+              <AddShoppingCartIcon />
+          </Link>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
 
 export default Header;

@@ -1,36 +1,33 @@
 import React from 'react';
-
-// Router-v6
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from 'react-router-dom';
-
-// Custom CSS
 import './App.css';
-
-// Bootstrap
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 // Components
 import Header from './Components/Header';
-import Cart from './Components/Cart';
-import Menu from './Components/Menu';
 import Products from './Components/Products';
+import Cart from './Components/Cart';
+import Middle from './Components/Middle';
+
+// Context Data Provider
+import { ProductContextProvider } from './Context/GlobalContext';
 
 const App = () =>{
   return(
+  <ProductContextProvider>
     <Router>
-
       <Header />
-      <Menu />
-
       <Routes>
-        <Route path = '/cart' element = {<Cart />} />
+        <Route path = '/' element = {<Middle/>} />
         <Route path = '/products' element = {<Products />} />
+        <Route path = '/cart' element = {<Cart />} />
       </Routes>
     </Router>
+  </ProductContextProvider> 
   )
 };
 

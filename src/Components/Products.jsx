@@ -1,28 +1,58 @@
-import React from 'react';
-import Paper from '@material-ui/core/Paper';
+import React, { useContext } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import { ProductContext } from '../Context/GlobalContext';
+import { Shoes } from '../Stock/Shoes';
 
-// products
-import { cycle } from '../Products/Bicycles';
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    myCard: {
+
+    },
+    cardImg: {
+        width: '100%',
+    },
+}));
 
 const Products = () => {
 
-    return (
-        <div className='container'>
-            <h1 className='text-center productsHead'>PRODUCTS</h1>
-            <div>
-                <div className="row">
+    const { AddToCart, cart } = useContext(ProductContext)
 
-                    {cycle.map((cycle, indx) => {
+    const classes = useStyles();
+
+    let addcartHandle = (shoeObj) =>{
+        AddToCart(shoeObj)
+        
+    }
+
+    const CheckProductIsInCart = (id) => {
+        if (cart.filter(x => x.id === id).length > 0)
+            return true;
+        else
+            return false;
+    }
+
+    return (
+        <div>
+            <div className='productHeader'>
+                <h3>CHOOSE YOUR FAVORITE SHOES</h3>
+            </div>
+            <div className={classes.root}>
+                <Grid container spacing={2}>
+                    {Shoes.map((shoeObj, indx) => {
                         return (
-                            <div className="col-sm-4" key = {indx} id = {cycle.id} ><Paper elevation={3}>
-                                <h5 style={{ color: '#E74C3C', padding: '20px', fontWeight: 'bolder' }}>{cycle.name}</h5>
-                                <img className='cycleImage' src={cycle.image} alt = 'cycleImage' />
-                                <h3 style={{ color: '#333', fontWeight: 'bold', textAlign: 'center' }}>{cycle.model}</h3>
-                                <h4 style={{ color: '#333', fontWeight: 'lighter', textAlign: 'center', paddingBottom: '20px' }}>${cycle.price}</h4>
-                            </Paper></div>
+                            <Grid item xs={12} sm={3} key = {indx}>
+                                <div className={classes.myCard}>
+                                    <img src={shoeObj.image} alt="#" className={classes.cardImg} />
+                                    {CheckProductIsInCart(shoeObj.id)?<Button disabled className='addcartBtn' onClick = {()=>addcartHandle(shoeObj)}>ADDED</Button>:<Button variant="contained" className='addcartBtn' onClick = {()=>addcartHandle(shoeObj)}>ADD TO CART</Button> }
+                                </div>
+                            </Grid>
                         )
-                    })}
-                </div>
+            })}
+            </Grid>
             </div>
         </div>
     )
