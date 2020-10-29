@@ -28,7 +28,7 @@ const Header = () => {
       <AppBar position="static" className = {classes.head}>
         <Toolbar>
           <Typography className={classes.title} variant="h5" noWrap>
-            <Link to = '/' className = 'navHead'>THE SHOE STORE</Link>
+            <Link to = '/' className = 'navHead'>MY SHOE STORE</Link>
           </Typography>
           <Link to = '/products' className = "navItem" >PRODUCTS</Link>
           <Link to = '/cart' className = "navItem" >
